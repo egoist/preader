@@ -1,0 +1,57 @@
+.output p {
+  @apply my-5;
+}
+
+.output img {
+  @apply max-w-full;
+  @apply my-5;
+}
+
+.output h2,
+.output h3,
+.output h4,
+.output h5 {
+  @apply my-5;
+}
+
+.output h2 {
+  @apply text-3xl;
+  @apply border-b;
+  @apply pb-3;
+}
+
+.output h3 {
+  @apply text-3xl;
+}
+
+.output h4 {
+  @apply text-2xl;
+}
+
+.output h5 {
+  @apply text-xl;
+}
+
+.output pre {
+  @apply overflow-auto;
+  @apply bg-gray-100;
+  @apply rounded-lg;
+  @apply p-5;
+}
+
+.output :not(pre) > code {
+  @apply bg-gray-100;
+  @apply rounded-md;
+  @apply text-sm;
+  @apply p-1;
+}
+
+.output ul {
+  @apply list-disc;
+  @apply pl-5;
+}
+
+.output ol {
+  @apply list-decimal;
+  @apply pl-5;
+}
