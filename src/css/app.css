@@ -3,3 +3,12 @@
 *::after {
   @apply border-gray-200;
 }
+
+/* 
+* Set the global background  
+* Avoids a glitch on mobile devices when scrolling to fast
+*/
+
+body.darkmode--activated {
+  background: #000000;
+}
