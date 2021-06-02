@@ -1,5 +1,6 @@
 import cheerio, { Cheerio, CheerioAPI, Element } from 'cheerio'
 import { getCustomCss } from './custom-css'
+import { contentSelectorRules } from './rules'
 
 const divToPElementsRegexp = /<(a|blockquote|dl|div|img|ol|p|pre|table|ul)/i
 const blacklistCandidatesRegexp = /popupbody|-ad|g-plus/i
@@ -19,13 +20,17 @@ export function extractContent(hostname: string, html: string) {
   $('script, style').each(function () {
     $(this).remove()
   })
-  transformMisusedDivsIntoParagraphs($)
-  removeUnlikelyCandidates($)
 
-  const candidates = getCandidates($)
-  const topCandidate = getTopCandidate($, candidates)
+  const contentSelector = contentSelectorRules[hostname] || 'body'
+  const $content = cheerio.load($(contentSelector).html())
 
-  let output = getArticle($, topCandidate, candidates)
+  transformMisusedDivsIntoParagraphs($content)
+  removeUnlikelyCandidates($content)
+
+  const candidates = getCandidates($content)
+  const topCandidate = getTopCandidate($content, candidates)
+
+  let output = getArticle($content, topCandidate, candidates)
   const title =
     $('meta[property="og:title"]').attr('content') || $('title').text()
   const description =
