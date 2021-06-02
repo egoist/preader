@@ -1,5 +1,13 @@
+.output {
+  @apply text-gray-800;
+}
+
 .output p {
   @apply my-5;
+}
+
+.output a {
+  @apply underline;
 }
 
 .output img {
@@ -12,6 +20,7 @@
 .output h4,
 .output h5 {
   @apply my-5;
+  @apply text-black;
 }
 
 .output h2 {
