@@ -138,7 +138,7 @@ function getCandidates($: CheerioAPI) {
 function scoreNode(el: Cheerio<Element>) {
   const c = { el, score: 0 }
 
-  switch (el.get(0).tagName.toLowerCase()) {
+  switch (el.get(0)?.tagName.toLowerCase()) {
     case 'div':
       c.score += 5
     case 'pre':
